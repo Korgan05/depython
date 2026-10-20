@@ -19,7 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Подключение маршрутов приложения blog (Лабораторная работа 1, стр. 34)
     path('blog/', include('blog.urls', namespace='blog')),
 ]
+
 

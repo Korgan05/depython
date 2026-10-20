@@ -4,15 +4,12 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 
-# кастомный менеджер, чтобы забирать только опубликованные посты (по методичке стр. 30)
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(status=Post.Status.PUBLISHED)
 
 
-# основная модель поста (лекция 2 / лаб 1-2)
 class Post(models.Model):
-    # статусы поста: черновик или опубликован
     class Status(models.TextChoices):
         DRAFT = 'DF', 'Draft'
         PUBLISHED = 'PB', 'Published'
@@ -20,9 +17,8 @@ class Post(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(
         max_length=250,
-        unique_for_date='publish'  # слаг должен быть уникальным для даты публикации (лаб 2, стр. 5)
+        unique_for_date='publish'
     )
-    # связь многие-к-одному с моделью User (при удалении автора удаляются и посты - CASCADE)
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -38,12 +34,10 @@ class Post(models.Model):
         default=Status.DRAFT
     )
 
-    # менеджеры
-    objects = models.Manager()          # дефолтный менеджер
-    published = PublishedManager()      # кастомный менеджер (Post.published.all())
+    objects = models.Manager()
+    published = PublishedManager()
 
     class Meta:
-        # сортировка по убыванию даты публикации (от новых к старым)
         ordering = ['-publish']
         indexes = [
             models.Index(fields=['-publish']),
@@ -53,7 +47,6 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        # канонический URL для поста (год/месяц/день/слаг) (лаб 2, стр. 3, 8)
         return reverse(
             'blog:post_detail',
             args=[
@@ -65,22 +58,21 @@ class Post(models.Model):
         )
 
 
-# модель комментариев к посту (лаб 2, стр. 35)
 class Comment(models.Model):
     post = models.ForeignKey(
         Post,
         on_delete=models.CASCADE,
-        related_name='comments'  # обратная связь: post.comments.all()
+        related_name='comments'
     )
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    active = models.BooleanField(default=True)  # флаг для модерации комментариев вручную
+    active = models.BooleanField(default=True)
 
     class Meta:
-        ordering = ['created']  # сортируем по дате добавления (хронологически)
+        ordering = ['created']
         indexes = [
             models.Index(fields=['created']),
         ]

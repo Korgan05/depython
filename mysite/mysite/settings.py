@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Приложение блога (Лаб. работа 1)
     'blog.apps.BlogConfig',
 ]
 
@@ -125,6 +124,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Конфигурация электронной почты (лаб 2, стр. 24)
-# Отправка писем в консоль терминала для локального тестирования
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+

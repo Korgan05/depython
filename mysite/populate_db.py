@@ -1,19 +1,17 @@
-"""
-Скрипт для быстрого заполнения базы данных тестовыми данными из методички.
-Создает суперюзера admin и 2 тестовых поста.
-Запуск: python populate_db.py
-"""
 import os
+import sys
 import django
+from django.utils import timezone
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
 django.setup()
 
 from django.contrib.auth.models import User
 from blog.models import Post
-from django.utils import timezone
 
-# 1. Создаем админа для входа в панель управления (admin / admin123)
 user, created = User.objects.get_or_create(
     username='admin',
     defaults={'email': 'admin@admin.com'}
@@ -23,12 +21,8 @@ if created:
     user.is_superuser = True
     user.is_staff = True
     user.save()
-    print('Суперпользователь admin создан (логин: admin, пароль: admin123)')
-else:
-    print('Пользователь admin уже есть в базе')
 
-# 2. Создаем посты из примера на стр. 38 методички
-post1, created1 = Post.objects.get_or_create(
+Post.objects.get_or_create(
     slug='who-was-django-reinhardt',
     defaults={
         'title': 'Who was Django Reinhardt?',
@@ -39,7 +33,7 @@ post1, created1 = Post.objects.get_or_create(
     }
 )
 
-post2, created2 = Post.objects.get_or_create(
+Post.objects.get_or_create(
     slug='another-post',
     defaults={
         'title': 'Another post',
@@ -50,4 +44,4 @@ post2, created2 = Post.objects.get_or_create(
     }
 )
 
-print(f'База данных готова! Всего постов: {Post.objects.count()}, опубликовано: {Post.published.count()}')
+print(f'Total posts: {Post.objects.count()}, Published: {Post.published.count()}')

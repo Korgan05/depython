@@ -124,3 +124,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Конфигурация электронной почты (лаб 2, стр. 24)
+# Отправка писем в консоль терминала для локального тестирования
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

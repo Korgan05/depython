@@ -40,3 +40,53 @@ p.date {
     font-size: 12px;
     font-style: italic;
 }
+
+/* Стили для пагинации (лаб 2) */
+.pagination {
+    margin: 40px 0;
+    font-weight: bold;
+}
+
+/* Стили для формы отправки email и добавления комментариев (лаб 2) */
+label {
+    float: left;
+    clear: both;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+input, textarea {
+    clear: both;
+    float: left;
+    margin: 0 0 10px;
+    background: #efefef;
+    border: 0;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+input[type=submit] {
+    font-weight: bold;
+    background: #00abff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* Стили для списка комментариев (лаб 2) */
+.comment {
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.comment:nth-child(even) {
+    background: #efefef;
+}
+
+.comment .info {
+    font-weight: bold;
+    font-size: 12px;
+    color: #666;
+}

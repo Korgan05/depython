@@ -340,6 +340,114 @@
   }
 },
 {
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add tag",
+    "content_type": 9,
+    "codename": "add_tag"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change tag",
+    "content_type": 9,
+    "codename": "change_tag"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete tag",
+    "content_type": 9,
+    "codename": "delete_tag"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view tag",
+    "content_type": 9,
+    "codename": "view_tag"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add tagged item",
+    "content_type": 10,
+    "codename": "add_taggeditem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change tagged item",
+    "content_type": 10,
+    "codename": "change_taggeditem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete tagged item",
+    "content_type": 10,
+    "codename": "delete_taggeditem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view tagged item",
+    "content_type": 10,
+    "codename": "view_taggeditem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add site",
+    "content_type": 11,
+    "codename": "add_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change site",
+    "content_type": 11,
+    "codename": "change_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete site",
+    "content_type": 11,
+    "codename": "delete_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view site",
+    "content_type": 11,
+    "codename": "view_site"
+  }
+},
+{
   "model": "auth.user",
   "pk": 1,
   "fields": {
@@ -422,6 +530,30 @@
   }
 },
 {
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "taggit",
+    "model": "tag"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "taggit",
+    "model": "taggeditem"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "sites",
+    "model": "site"
+  }
+},
+{
   "model": "sessions.session",
   "pk": "3hrdq1t24s1p17pwzsbf60xx32mvf5l7",
   "fields": {
@@ -445,9 +577,9 @@
     "slug": "who-was-django-reinhardt",
     "author": 1,
     "body": "Jean Reinhardt, known to all by his Romani nickname Django, was a Belgian-born Romani-French jazz guitarist and composer. He was the first major jazz talent to emerge from Europe and remains the most significant.",
-    "publish": "2026-10-16T12:50:59.750Z",
-    "created": "2026-10-16T12:50:59.751Z",
-    "updated": "2026-10-16T12:50:59.751Z",
+    "publish": "2026-10-26T11:30:00Z",
+    "created": "2026-10-26T11:30:00Z",
+    "updated": "2026-10-26T11:30:00Z",
     "status": "PB"
   }
 },
@@ -459,9 +591,9 @@
     "slug": "another-post",
     "author": 1,
     "body": "Post body.",
-    "publish": "2026-10-16T12:50:59.755Z",
-    "created": "2026-10-16T12:50:59.757Z",
-    "updated": "2026-10-16T12:50:59.757Z",
+    "publish": "2026-10-26T15:45:00Z",
+    "created": "2026-10-26T15:45:00Z",
+    "updated": "2026-10-26T15:45:00Z",
     "status": "PB"
   }
 },
@@ -473,9 +605,9 @@
     "slug": "django-4-features",
     "author": 1,
     "body": "Django 4 brings many exciting features including async views, zoneinfo timezone support, and more.",
-    "publish": "2026-10-18T08:01:04.206Z",
-    "created": "2026-10-20T08:01:04.209Z",
-    "updated": "2026-10-20T08:01:04.209Z",
+    "publish": "2026-10-27T10:20:00Z",
+    "created": "2026-10-27T10:20:00Z",
+    "updated": "2026-10-27T10:20:00Z",
     "status": "PB"
   }
 },
@@ -487,9 +619,9 @@
     "slug": "understanding-django-orm",
     "author": 1,
     "body": "The Object-Relational Mapping (ORM) layer in Django allows developers to interact with the database using Python code instead of raw SQL queries.",
-    "publish": "2026-10-19T08:01:04Z",
-    "created": "2026-10-20T08:01:04.217Z",
-    "updated": "2026-10-20T11:31:14.561Z",
+    "publish": "2026-10-27T14:15:00Z",
+    "created": "2026-10-27T14:15:00Z",
+    "updated": "2026-10-27T14:15:00Z",
     "status": "PB"
   }
 },
@@ -501,9 +633,9 @@
     "slug": "cbv-vs-fbv",
     "author": 1,
     "body": "Class-based views provide an alternative way to implement views as Python objects instead of functions.",
-    "publish": "2026-10-20T08:01:04.206Z",
-    "created": "2026-10-20T08:01:04.223Z",
-    "updated": "2026-10-20T08:01:04.223Z",
+    "publish": "2026-10-28T09:30:00Z",
+    "created": "2026-10-28T09:30:00Z",
+    "updated": "2026-10-28T09:30:00Z",
     "status": "PB"
   }
 },
@@ -511,13 +643,13 @@
   "model": "blog.post",
   "pk": 6,
   "fields": {
-    "title": "Lab1 2e2e",
-    "slug": "lab1-2e2e",
+    "title": "Post formatted with markdown",
+    "slug": "post-formatted-with-markdown",
     "author": 1,
-    "body": "fffffffffffffffffffffffffffffff",
-    "publish": "2026-10-20T10:13:24Z",
-    "created": "2026-10-20T10:14:53.112Z",
-    "updated": "2026-10-20T10:14:53.112Z",
+    "body": "This is a post formatted with markdown\n--------------------------------------\n*This is emphasized* and **this is more emphasized**.\n\nHere is a list:\n* One\n* Two\n* Three\n\nAnd a [link to the Django website](https://www.djangoproject.com/).",
+    "publish": "2026-10-28T14:00:00Z",
+    "created": "2026-10-28T14:00:00Z",
+    "updated": "2026-10-28T14:00:00Z",
     "status": "PB"
   }
 },
@@ -529,8 +661,8 @@
     "name": "Иван Студент",
     "email": "student@example.com",
     "body": "Отличный пост! Очень помог разобраться в теме лабы.",
-    "created": "2026-10-20T08:01:04.232Z",
-    "updated": "2026-10-24T11:14:27.548Z",
+    "created": "2026-10-28T14:30:00Z",
+    "updated": "2026-10-28T14:30:00Z",
     "active": false
   }
 },
@@ -542,8 +674,8 @@
     "name": "Анна",
     "email": "anna@example.com",
     "body": "Классная статья, спасибо автору!",
-    "created": "2026-10-20T08:01:22.296Z",
-    "updated": "2026-10-20T08:01:22.296Z",
+    "created": "2026-10-28T15:00:00Z",
+    "updated": "2026-10-28T15:00:00Z",
     "active": true
   }
 },
@@ -555,8 +687,8 @@
     "name": "hhhhh",
     "email": "sakauovk05@gmail.com",
     "body": "gffffffffffffffffff",
-    "created": "2026-10-20T11:35:58.649Z",
-    "updated": "2026-10-20T11:35:58.649Z",
+    "created": "2026-10-28T15:45:00Z",
+    "updated": "2026-10-28T15:45:00Z",
     "active": true
   }
 },
@@ -568,9 +700,183 @@
     "name": "ffffffffff",
     "email": "ffffffffffffffff@gmail.com",
     "body": "111111111111",
-    "created": "2026-10-20T11:36:18.383Z",
-    "updated": "2026-10-20T11:36:18.383Z",
+    "created": "2026-10-28T16:20:00Z",
+    "updated": "2026-10-28T16:20:00Z",
     "active": true
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 1,
+  "fields": {
+    "name": "jazz",
+    "slug": "jazz"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 2,
+  "fields": {
+    "name": "music",
+    "slug": "music"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 3,
+  "fields": {
+    "name": "django",
+    "slug": "django"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 4,
+  "fields": {
+    "name": "python",
+    "slug": "python"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 5,
+  "fields": {
+    "name": "markdown",
+    "slug": "markdown"
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 1,
+  "fields": {
+    "tag": 1,
+    "content_type": 7,
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 2,
+  "fields": {
+    "tag": 2,
+    "content_type": 7,
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 3,
+  "fields": {
+    "tag": 3,
+    "content_type": 7,
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 4,
+  "fields": {
+    "tag": 3,
+    "content_type": 7,
+    "object_id": 2
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 5,
+  "fields": {
+    "tag": 4,
+    "content_type": 7,
+    "object_id": 2
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 6,
+  "fields": {
+    "tag": 3,
+    "content_type": 7,
+    "object_id": 3
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 7,
+  "fields": {
+    "tag": 4,
+    "content_type": 7,
+    "object_id": 3
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 8,
+  "fields": {
+    "tag": 3,
+    "content_type": 7,
+    "object_id": 4
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 9,
+  "fields": {
+    "tag": 4,
+    "content_type": 7,
+    "object_id": 4
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 10,
+  "fields": {
+    "tag": 3,
+    "content_type": 7,
+    "object_id": 5
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 11,
+  "fields": {
+    "tag": 4,
+    "content_type": 7,
+    "object_id": 5
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 13,
+  "fields": {
+    "tag": 2,
+    "content_type": 7,
+    "object_id": 6
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 14,
+  "fields": {
+    "tag": 3,
+    "content_type": 7,
+    "object_id": 6
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 15,
+  "fields": {
+    "tag": 5,
+    "content_type": 7,
+    "object_id": 6
+  }
+},
+{
+  "model": "sites.site",
+  "pk": 1,
+  "fields": {
+    "domain": "example.com",
+    "name": "example.com"
   }
 }
 ]

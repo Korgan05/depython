@@ -41,13 +41,11 @@ p.date {
     font-style: italic;
 }
 
-/* Стили для пагинации (лаб 2) */
 .pagination {
     margin: 40px 0;
     font-weight: bold;
 }
 
-/* Стили для формы отправки email и добавления комментариев (лаб 2) */
 label {
     float: left;
     clear: both;
@@ -75,7 +73,6 @@ input[type=submit] {
     cursor: pointer;
 }
 
-/* Стили для списка комментариев (лаб 2) */
 .comment {
     padding: 10px;
     margin: 10px 0;

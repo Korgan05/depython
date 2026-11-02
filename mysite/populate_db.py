@@ -1,12 +1,7 @@
-"""
-Скрипт для быстрого заполнения базы данных тестовыми данными из методички.
-Создает суперюзера admin, тестовые посты (для демонстрации пагинации) и комментарии.
-Запуск: python populate_db.py
-"""
 import os
 import sys
 import django
-from datetime import timedelta
+from datetime import datetime, timezone
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -16,55 +11,68 @@ django.setup()
 
 from django.contrib.auth.models import User
 from blog.models import Post, Comment
-from django.utils import timezone
 
-# 1. Создаем админа для входа в панель управления (admin / admin123)
 user, created = User.objects.get_or_create(
     username='admin',
     defaults={'email': 'admin@admin.com'}
 )
 if created:
-    user.set_password('admin123')
+    user.set_password('admin')
     user.is_superuser = True
     user.is_staff = True
     user.save()
-    print('Суперпользователь admin создан (логин: admin, пароль: admin123)')
-else:
-    print('Пользователь admin уже есть в базе')
 
-now = timezone.now()
-
-# 2. Создаем посты (минимум 4-5 штук, чтобы наглядно показать пагинацию по 3 поста на страницу)
 posts_data = [
     {
         'title': 'Who was Django Reinhardt?',
         'slug': 'who-was-django-reinhardt',
         'body': 'Jean Reinhardt, known to all by his Romani nickname Django, was a Belgian-born Romani-French jazz guitarist and composer. He was the first major jazz talent to emerge from Europe and remains the most significant.',
-        'publish': now - timedelta(days=4),
+        'publish': datetime(2026, 10, 26, 11, 30, tzinfo=timezone.utc),
+        'tags': ['django', 'jazz', 'music']
     },
     {
         'title': 'Another post',
         'slug': 'another-post',
         'body': 'Post body with interesting thoughts about web development and Python.',
-        'publish': now - timedelta(days=3),
+        'publish': datetime(2026, 10, 26, 15, 45, tzinfo=timezone.utc),
+        'tags': ['django', 'python']
     },
     {
         'title': 'Django 4 Features',
         'slug': 'django-4-features',
         'body': 'Django 4 brings many exciting features including async views, zoneinfo timezone support, and more.',
-        'publish': now - timedelta(days=2),
+        'publish': datetime(2026, 10, 27, 10, 20, tzinfo=timezone.utc),
+        'tags': ['django', 'python']
     },
     {
         'title': 'Understanding Django ORM',
         'slug': 'understanding-django-orm',
         'body': 'The Object-Relational Mapping (ORM) layer in Django allows developers to interact with the database using Python code instead of raw SQL queries.',
-        'publish': now - timedelta(days=1),
+        'publish': datetime(2026, 10, 27, 14, 15, tzinfo=timezone.utc),
+        'tags': ['django', 'python']
     },
     {
         'title': 'Class-based views vs Function-based views',
         'slug': 'cbv-vs-fbv',
         'body': 'Class-based views provide an alternative way to implement views as Python objects instead of functions.',
-        'publish': now,
+        'publish': datetime(2026, 10, 28, 9, 30, tzinfo=timezone.utc),
+        'tags': ['django', 'python']
+    },
+    {
+        'title': 'Post formatted with markdown',
+        'slug': 'post-formatted-with-markdown',
+        'body': '''This is a post formatted with markdown
+--------------------------------------
+*This is emphasized* and **this is more emphasized**.
+
+Here is a list:
+* One
+* Two
+* Three
+
+And a [link to the Django website](https://www.djangoproject.com/).''',
+        'publish': datetime(2026, 10, 28, 14, 0, tzinfo=timezone.utc),
+        'tags': ['django', 'markdown', 'music']
     },
 ]
 
@@ -79,16 +87,30 @@ for p in posts_data:
             'publish': p['publish']
         }
     )
+    if not created_p:
+        post_obj.title = p['title']
+        post_obj.body = p['body']
+        post_obj.publish = p['publish']
+        post_obj.status = Post.Status.PUBLISHED
+        post_obj.save()
+    Post.objects.filter(id=post_obj.id).update(
+        created=p['publish'],
+        updated=p['publish']
+    )
+    post_obj.tags.set(p['tags'])
 
-# 3. Добавляем тестовый комментарий к первому посту
 first_post = Post.objects.filter(slug='who-was-django-reinhardt').first()
 if first_post:
-    Comment.objects.get_or_create(
+    c1, _ = Comment.objects.get_or_create(
         post=first_post,
-        name='Иван Студент',
-        email='student@example.com',
-        body='Отличный пост! Очень помог разобраться в теме лабы.',
+        name='Dias',
+        email='dias@example.com',
+        body='Great post, very useful!',
         defaults={'active': True}
     )
+    Comment.objects.filter(id=c1.id).update(
+        created=datetime(2026, 10, 28, 14, 30, tzinfo=timezone.utc),
+        updated=datetime(2026, 10, 28, 14, 30, tzinfo=timezone.utc)
+    )
 
-print(f'База данных готова! Всего постов: {Post.objects.count()}, комментариев: {Comment.objects.count()}')
+print(f'Database populated: {Post.objects.count()} posts, {Comment.objects.count()} comments.')
